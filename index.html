@@ -9,24 +9,78 @@
       color: #5FBB97;
       margin: 0;
       font-family: Arial, sans-serif;
-      text-align: center; /* Keskittää tekstin horisontaalisesti */
-      padding-top: 60px; /* Jotta logo ei peitä otsikkoa */
+      padding-top: 60px; /* tilaa nav-palkille */
     }
 
-    h1 {
-      margin-top: 40px; /* Lisää hieman tilaa yläreunaan */
+    /* Navigaatiopalkki */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #1b1b1b;
+      padding: 10px 0;
+      text-align: center;
+      z-index: 999;
+    }
+
+    nav a {
+      color: #5FBB97;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 60px 20px;
     }
   </style>
 </head>
 <body>
-<img src="Veikkausstadion Logo.png" alt="Veikkausstadion logo" style="
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  width: 120px;
-  height: auto;
-  z-index: 1000;
-" />
-  <h1>Veikkausstadion — Mielipiteitä, faktoja ja veikkauksia urheilusta</h1>
+
+  <!-- Logo -->
+  <img src="Veikkausstadion Logo.png" alt="Veikkausstadion logo" style="
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 80px;
+    height: auto;
+    z-index: 1000;
+  " />
+
+  <!-- Navigaatiopalkki -->
+  <nav>
+    <a href="#jalkapallo">Jalkapallo</a>
+    <a href="#jaakiekko">Jääkiekko</a>
+    <a href="#muut">Muut Lajit</a>
+    <a href="#yleista">Yleistä Urheilusta</a>
+  </nav>
+
+  <!-- Sisältöalueet -->
+  <section id="jalkapallo">
+    <h2>Jalkapallo</h2>
+    <p>Sisältöä jalkapallosta...</p>
+  </section>
+
+  <section id="jaakiekko">
+    <h2>Jääkiekko</h2>
+    <p>Sisältöä jääkiekosta...</p>
+  </section>
+
+  <section id="muut">
+    <h2>Muut Lajit</h2>
+    <p>Muut Lajit</p>
+  </section>
+
+  <section id="yleista">
+    <h2>Yleistä</h2>
+    <p>Yleistä urheilusta</p>
+  </section>
+
 </body>
 </html>
