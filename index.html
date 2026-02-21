@@ -1,86 +1,1090 @@
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Veikkausstadion</title>
-  <style>
-    body {
-      background-color: #272727;
-      color: #5FBB97;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      padding-top: 60px; /* tilaa nav-palkille */
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goldie Agency — We Build Backlinks. You Get Customers.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dim: #8B6F2E;
+    --black: #0A0904;
+    --dark: #111008;
+    --dark2: #1A1810;
+    --cream: #F5EDD8;
+    --cream2: #E8D9B8;
+    --white: #FDFAF3;
+    --muted: #8A836C;
+  }
 
-    /* Navigaatiopalkki */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #1b1b1b;
-      padding: 10px 0;
-      text-align: center;
-      z-index: 999;
-    }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    nav a {
-      color: #5FBB97;
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: bold;
-      font-size: 16px;
-    }
+  html { scroll-behavior: smooth; }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
 
-    section {
-      padding: 60px 20px;
-    }
-  </style>
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.5;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(10,9,4,0.95), transparent);
+    backdrop-filter: blur(2px);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--cream); }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--black) !important;
+    padding: 10px 22px;
+    border-radius: 2px;
+    font-weight: 500 !important;
+    transition: background 0.3s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--black) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,168,76,0.04) 0%, transparent 50%);
+  }
+
+  .hero-line {
+    position: absolute;
+    top: 0; left: 60px; right: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+    opacity: 0.4;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold-light);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 36px;
+    width: fit-content;
+    animation: fadeInUp 0.8s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 7vw, 100px);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    animation: fadeInUp 0.8s ease 0.1s both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 500px;
+    margin-top: 28px;
+    margin-bottom: 48px;
+    font-weight: 300;
+    animation: fadeInUp 0.8s ease 0.2s both;
+  }
+
+  .hero-sub strong {
+    color: var(--cream2);
+    font-weight: 500;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease 0.3s both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+    padding: 16px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(201,168,76,0.25);
+  }
+
+  .btn-secondary {
+    color: var(--cream2);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding-bottom: 2px;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold-light);
+  }
+
+  .hero-guarantee {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    animation: fadeInUp 0.8s ease 0.4s both;
+  }
+
+  .hero-guarantee svg { color: var(--gold); }
+
+  /* STATS STRIP */
+  .stats-strip {
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 48px 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .stat-item {
+    padding: 0 48px;
+    position: relative;
+    text-align: center;
+  }
+
+  .stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 10%; bottom: 10%;
+    width: 1px;
+    background: rgba(201,168,76,0.2);
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 8px;
+    font-weight: 400;
+  }
+
+  /* FEATURES */
+  .features {
+    padding: 120px 60px;
+    position: relative;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1.15;
+    max-width: 600px;
+    margin-bottom: 64px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-title em { color: var(--gold); font-style: italic; }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .feature-card {
+    background: var(--dark);
+    padding: 40px 32px;
+    transition: background 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .feature-card:hover { background: var(--dark2); }
+  .feature-card:hover::before { transform: scaleX(1); }
+
+  .feature-icon {
+    width: 44px; height: 44px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    font-size: 20px;
+  }
+
+  .feature-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--cream);
+  }
+
+  .feature-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* GUARANTEE */
+  .guarantee-section {
+    padding: 0 60px 120px;
+  }
+
+  .guarantee-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.02) 100%);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 72px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .guarantee-box::before {
+    content: '★';
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 200px;
+    color: rgba(201,168,76,0.04);
+    font-family: serif;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .guarantee-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 3.5vw, 48px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .guarantee-title em { color: var(--gold); font-style: italic; }
+
+  .guarantee-checks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .guarantee-checks li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 15px;
+    color: var(--cream2);
+  }
+
+  .check-icon {
+    width: 22px; height: 22px;
+    background: var(--gold);
+    color: var(--black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 12px;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    padding: 120px 60px;
+    background: var(--dark);
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+  }
+
+  .testimonial-card {
+    background: var(--black);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 36px;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .testimonial-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-4px);
+  }
+
+  .testimonial-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 16px;
+    opacity: 0.6;
+  }
+
+  .testimonial-text {
+    font-size: 14px;
+    color: var(--cream2);
+    line-height: 1.8;
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gold-light);
+    letter-spacing: 0.05em;
+  }
+
+  .stars {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  /* PROCESS */
+  .process {
+    padding: 120px 60px;
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 64px;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dim), var(--gold-dim), transparent);
+    opacity: 0.4;
+  }
+
+  .process-step {
+    padding: 0 32px;
+    text-align: center;
+    position: relative;
+  }
+
+  .step-number {
+    width: 56px; height: 56px;
+    background: var(--black);
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s;
+  }
+
+  .process-step:hover .step-number {
+    background: var(--gold);
+    color: var(--black);
+    box-shadow: 0 0 30px rgba(201,168,76,0.4);
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--cream);
+  }
+
+  .step-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 120px 60px;
+    background: var(--dark);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
+  }
+
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 68px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    max-width: 700px;
+    margin: 0 auto 28px;
+    position: relative;
+  }
+
+  .cta-title em { color: var(--gold); font-style: italic; }
+
+  .cta-sub {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 440px;
+    margin: 0 auto 48px;
+    position: relative;
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .cta-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 20px;
+    letter-spacing: 0.05em;
+    position: relative;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .footer-brand span { color: var(--cream); }
+
+  .footer-tagline {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 280px;
+    margin-bottom: 24px;
+  }
+
+  .footer-contact {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .footer-heading {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(201,168,76,0.08);
+    padding: 24px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-bottom-text {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* FEATURED IN */
+  .featured {
+    padding: 60px;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    text-align: center;
+  }
+
+  .featured-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .featured-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .featured-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--muted);
+    opacity: 0.5;
+    letter-spacing: 0.05em;
+    transition: opacity 0.3s;
+  }
+
+  .featured-logo:hover { opacity: 0.9; color: var(--cream); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .process-steps::before { display: none; }
+    footer { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 120px 24px 60px; }
+    .stats-strip { grid-template-columns: 1fr; padding: 40px 24px; }
+    .stat-item::after { display: none; }
+    .features, .guarantee-section, .testimonials, .process, .cta-section { padding: 80px 24px; }
+    .guarantee-box { grid-template-columns: 1fr; padding: 48px 32px; gap: 40px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; gap: 48px; }
+    footer { grid-template-columns: 1fr; padding: 40px 24px; }
+    .footer-bottom { padding: 24px; flex-direction: column; gap: 12px; }
+    .featured { padding: 40px 24px; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- Logo -->
-  <img src="Veikkausstadion Logo.png" alt="Veikkausstadion logo" style="
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    width: 80px;
-    height: auto;
-    z-index: 1000;
-  " />
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Goldie<span> Agency</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#results">Case Studies</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
 
-  <!-- Navigaatiopalkki -->
-  <nav>
-    <a href="#jalkapallo">Jalkapallo</a>
-    <a href="#jaakiekko">Jääkiekko</a>
-    <a href="#muut">Muut Lajit</a>
-    <a href="#yleista">Yleistä Urheilusta</a>
-  </nav>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+  
+  <div class="hero-badge">
+    ✦ Page 1 Guaranteed or You Don't Pay
+  </div>
 
-  <!-- Sisältöalueet -->
-  <section id="jalkapallo">
-    <h2>Jalkapallo</h2>
-    <p>Sisältöä jalkapallosta...</p>
-  </section>
+  <h1>We Build<br><em>Backlinks.</em><br>You Get Customers.</h1>
 
-  <section id="jaakiekko">
-    <h2>Jääkiekko</h2>
-    <p>Sisältöä jääkiekosta...</p>
-  </section>
+  <p class="hero-sub">
+    Most agencies charge you monthly and pray it works. 
+    <strong>We get you on page 1 in 90 days</strong> — or you don't pay. Simple.
+  </p>
 
-  <section id="muut">
-    <h2>Muut Lajit</h2>
-    <p>Muut Lajit</p>
-  </section>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">
+      Book a Free Call
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="#results" class="btn-secondary">
+      View Case Studies
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
 
-  <section id="yleista">
-    <h2>Yleistä</h2>
-    <p>Yleistä urheilusta</p>
-  </section>
+  <div class="hero-guarantee">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--gold)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    High DR links only &nbsp;·&nbsp; Links live in 14–21 days &nbsp;·&nbsp; Done-for-you service
+  </div>
+</section>
 
+<!-- STATS -->
+<div class="stats-strip reveal">
+  <div class="stat-item">
+    <div class="stat-number" data-target="1000">0</div>
+    <div class="stat-label">Businesses Ranked</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number" data-target="312" data-suffix="%">0%</div>
+    <div class="stat-label">Avg. Traffic Increase</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">90</div>
+    <div class="stat-label">Days to Page 1</div>
+  </div>
+</div>
+
+<!-- FEATURED IN -->
+<div class="featured reveal">
+  <div class="featured-label">As featured in</div>
+  <div class="featured-logos">
+    <span class="featured-logo">Forbes</span>
+    <span class="featured-logo">Entrepreneur</span>
+    <span class="featured-logo">Search Engine Journal</span>
+    <span class="featured-logo">Ahrefs</span>
+    <span class="featured-logo">Semrush</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="services">
+  <div class="section-label">What We Offer</div>
+  <h2 class="section-title">Everything you need to <em>dominate</em> search rankings</h2>
+
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon">🎯</div>
+      <div class="feature-title">High-Authority Only</div>
+      <p class="feature-desc">Carefully vetted links from top DR websites. No junk, no PBNs — only genuine editorial placements your competitors can't easily replicate.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Fast Results</div>
+      <p class="feature-desc">Links go live in 14–21 days. Our established relationships with thousands of publishers means we skip the queue and deliver rapidly.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">Results Guaranteed</div>
+      <p class="feature-desc">Page 1 in 90 days or you don't pay. We only take on campaigns we're confident we can win — that's our promise and our risk.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">✦</div>
+      <div class="feature-title">Done-For-You</div>
+      <p class="feature-desc">You get a dedicated account manager, weekly reporting, and zero heavy lifting. We handle everything from outreach to placement to tracking.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee-section" id="about">
+  <div class="guarantee-box reveal">
+    <div>
+      <div class="section-label">Our Promise</div>
+      <h2 class="guarantee-title">Page 1 in 90 days<br>or <em>you don't pay.</em></h2>
+      <p style="font-size:15px; color:var(--muted); margin-top:20px; max-width:380px;">We've worked on 1,000+ link building campaigns. We only get paid when we deliver. That's the risk-free guarantee we stand behind.</p>
+    </div>
+    <ul class="guarantee-checks">
+      <li>
+        <span class="check-icon">✓</span>
+        <div><strong style="color:var(--cream)">Pay-on-performance model</strong> — you only pay when we deliver confirmed, live backlinks to your site.</div>
+      </li>
+      <li>
+        <span class="check-icon">✓</span>
+        <div><strong style="color:var(--cream)">3-layer quality approval</strong> — every link is reviewed before it's built, ensuring maximum SEO impact.</div>
+      </li>
+      <li>
+        <span class="check-icon">✓</span>
+        <div><strong style="color:var(--cream)">Exclusive publisher network</strong> — 5+ years building relationships with sites your competitors can't access.</div>
+      </li>
+      <li>
+        <span class="check-icon">✓</span>
+        <div><strong style="color:var(--cream)">Free weekly SEO mastermind</strong> — personalized coaching sessions to 10X your overall organic results.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-label">How It Works</div>
+  <h2 class="section-title">From zero to <em>page 1</em> in four steps</h2>
+
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="step-number">1</div>
+      <div class="step-title">Strategy Call</div>
+      <p class="step-desc">We audit your site, analyze your competitors, and build a custom link building roadmap tailored to your niche and goals.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-number">2</div>
+      <div class="step-title">Link Prospecting</div>
+      <p class="step-desc">Our team identifies the highest-impact opportunities from our exclusive network of 5,000+ vetted publishers.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-number">3</div>
+      <div class="step-title">Outreach & Placement</div>
+      <p class="step-desc">We handle all outreach, content creation, and link placement. Links go live in 14–21 days with full transparency.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-number">4</div>
+      <div class="step-title">Rankings & Growth</div>
+      <p class="step-desc">Watch your rankings climb and traffic grow. Your account manager keeps you updated with detailed progress reports.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="results">
+  <div class="section-label">Client Results</div>
+  <h2 class="section-title reveal">What our <em>clients</em> are saying</h2>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Julian went to work immediately and found us quality links from great websites, not links that are for sale. These links raised our rankings in 2 weeks and helped us gain market share. This guy is the real deal.</p>
+      <div class="testimonial-author">Alex Membrillo</div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">We've been working with Julian for more than a year and he consistently builds quality links, helping us to double our organic traffic. When we publish new content, we simply let Julian know and he gets on with it.</p>
+      <div class="testimonial-author">Ben Smye</div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Julian is a top-notch SEO pro. He is easy to work with and gets things done in a timely fashion with quality output all-around. I would recommend him to everyone I know without hesitation.</p>
+      <div class="testimonial-author">Daniel Gillaspia</div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Julian offers a risk-free backlink service. The links built were genuine, high authoritative links that benefited our SEO rankings. He makes it easy to monitor link status, and was not pushy in any way. A perfect service.</p>
+      <div class="testimonial-author">George Panayides</div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">We've seen a significant boost in website traffic, keyword rankings, and overall online visibility. Communication has been seamless, and they consistently deliver detailed reports. Highly recommend Goldie Agency.</p>
+      <div class="testimonial-author">Dan Berges</div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Julian and his team are experts in their field, and the results speak for themselves. They helped me drive more traffic from high-quality, authoritative websites in no time. Truly exceptional work.</p>
+      <div class="testimonial-author">Anita Koimur</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <h2 class="cta-title reveal">Ready to reach<br><em>page 1?</em></h2>
+  <p class="cta-sub reveal">Book a free strategy call. We'll audit your site, scope your competition, and show you exactly how we'll rank you.</p>
+  <div class="cta-actions reveal">
+    <a href="#" class="btn-primary" style="font-size:16px; padding:18px 44px;">
+      📅 Book Your Free Call
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <p class="cta-note reveal">No obligation. No sales pressure. Just a genuine conversation about your SEO goals.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Goldie<span> Agency</span></div>
+    <p class="footer-tagline">We build backlinks. You get customers. 1,000+ businesses ranked, 312% avg. traffic increase, 90-day page 1 guarantee.</p>
+    <div class="footer-contact">
+      160 Robinson Road #14-04<br>
+      Singapore 068914<br>
+      +1 (914) 743-0680
+    </div>
+  </div>
+  <div>
+    <div class="footer-heading">Navigate</div>
+    <ul class="footer-links">
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Case Studies</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-heading">Follow</div>
+    <ul class="footer-links">
+      <li><a href="#">YouTube</a></li>
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Facebook Group</a></li>
+      <li><a href="#">Podcast</a></li>
+      <li><a href="#">Twitter / X</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <div class="footer-bottom-text">© 2024 Goldie Agency PTE. LTD. — Reg No: 202007996N</div>
+  <div class="footer-bottom-text" style="color:var(--gold-dim)">We Build Backlinks. You Get Customers.</div>
+</div>
+
+<script>
+  // Intersection Observer for reveal animations
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Counter animation
+  function animateCounter(el, target, suffix = '') {
+    let start = 0;
+    const duration = 2000;
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) {
+        start = target;
+        clearInterval(timer);
+      }
+      el.textContent = Math.floor(start).toLocaleString() + suffix;
+    }, 16);
+  }
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('[data-target]').forEach(el => {
+          const target = parseInt(el.dataset.target);
+          const suffix = el.dataset.suffix || (el.dataset.target == '1000' ? '+' : '');
+          animateCounter(el, target, suffix);
+        });
+        statsObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const statsStrip = document.querySelector('.stats-strip');
+  if (statsStrip) statsObserver.observe(statsStrip);
+</script>
 </body>
 </html>
